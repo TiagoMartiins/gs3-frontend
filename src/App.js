@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Routes from "./routes/routes";
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './styles/global';
+import { theme } from './theme';
+import  Burger  from "./components/burger";
+import  Menu  from "./components/menu";
 
-function App() {
+
+
+
+function App () {
+  const [open, setOpen] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <>
+        <Routes />
+        <GlobalStyles />
+        <div>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
+      </>
+    </ThemeProvider>
   );
 }
-
 export default App;
