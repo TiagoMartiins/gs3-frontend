@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
-
 import {Link} from 'react-router-dom';
-
 import api from '../../services/api'
-
 import './lista.css'
 
 function ListaCliente() {
@@ -12,14 +9,12 @@ function ListaCliente() {
   async function handleListaCliente() {
     await api.get('/cliente').then(response => {
         setList(response.data)
-        console.log(response.data);
     }).catch(error =>{
         alert("Usuario não autenticado");
     })
   }
   
   function deleteCliente (id) {
-    console.log(id);
     api.delete(`/cliente?id=${id}`).then(response =>{
         if(response.ok)
         alert("Cliente deletado com sucesso");

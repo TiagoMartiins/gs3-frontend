@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {logout} from '../../services/auth'
-import {Link, Redirect} from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 
 const Logout = () => {
 

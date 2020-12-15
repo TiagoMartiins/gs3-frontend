@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import Logo from "../../logo-gs3.png";
 import api from "../../services/api";
@@ -23,8 +23,6 @@ class Login extends Component {
     } else {
       try {
         const response = await api.post("/login", { usuario, senha });
-        console.log("TOKEN");
-        console.log(response);
         login(response.headers.authorization);
         this.props.history.push("/signup");
       } catch (err) {

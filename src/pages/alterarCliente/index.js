@@ -30,25 +30,20 @@ transformStringToInt= (tipoTelefone) => {
             return 2;
         case 'CELULAR':
             return 3;
+        default:
+            return 0;
     }
 }
 
   async componentDidMount() {
     const {id} = this.props.match.params;
 
-    console.log("Entoru");
-
     await api.get(`/cliente/get?id=${id}`).then(response =>{
         let cliente = response.data;
         cliente.telefones.map(x =>{
-            console.log(x.tipoTelefone);
-            x.tipoTelefone = this.transformStringToInt(x.tipoTelefone);
-            console.log(x.tipoTelefone);
-            console.log("Entrou aq");
+            return x.tipoTelefone = this.transformStringToInt(x.tipoTelefone);
         })
         this.setState({cliente});
-        console.log(response.data);
-        console.log(this.state.cliente);
     }).catch(error =>{
         alert("Erro");
         document.getElementById('container').style.display="none";

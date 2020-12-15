@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-
 import api from "../../services/api"
-
 import {isAuthenticated} from "../../services/auth"
-
-import  Input from '../../components/input';
-
-
 import { Form, Container } from "./styles";
 
 class SignUp extends Component {
@@ -92,14 +86,10 @@ class SignUp extends Component {
 
   handleSignUp = async e => {
     e.preventDefault();
-
-    console.log("aPI");
-    console.log(this.state);
     try{
       const response = await api.post("/cliente",JSON.stringify(this.state),{headers: {'Content-Type': 'application/json;charset=utf-8'}});
       if(response.data)
         this.props.history.push("/listaCliente");
-        console.log(response);
     }catch(error){
       alert("Erro");
     }   

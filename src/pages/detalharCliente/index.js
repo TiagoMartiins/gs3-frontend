@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import api from '../../services/api'
 import  Input from '../../components/input'
-
 import './detalhar.css'
 
 export default class Detalhar extends Component {
@@ -31,14 +30,9 @@ export default class Detalhar extends Component {
     async componentDidMount() {
         const {id} = this.props.match.params;
 
-        console.log(this.props);
-        console.log("entroua component did mount");
-
         await api.get(`/cliente/get?id=${id}`).then(response =>{
             let cliente = response.data;
             this.setState({cliente});
-            console.log(response.data);
-            console.log(this.state.cliente);
         }).catch(error =>{
             alert("Erro");
             document.getElementById('divCentral').style.display="none";
