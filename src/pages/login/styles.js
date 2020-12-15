@@ -8,19 +8,21 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 400px;
+  width: 40vw;
+  height:45vh;
   background: #fff;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius:15px;
   img {
     width: 100px;
     margin: 10px 0 40px;
   }
   p {
     color: #ff3333;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     border: 1px solid #ff3333;
     padding: 10px;
     width: 100%;
@@ -31,6 +33,7 @@ export const Form = styled.form`
     height: 46px;
     margin-bottom: 15px;
     padding: 0 20px;
+    border-radius:15px;
     color: #777;
     font-size: 15px;
     width: 100%;

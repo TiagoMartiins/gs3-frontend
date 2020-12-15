@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
 import api from '../../services/api'
-import Login from '../login'
+import  Input from '../../components/input'
 
 import './detalhar.css'
 
@@ -12,7 +11,14 @@ export default class Detalhar extends Component {
             idCliente:"",
             nome:"",
             cpf:"",
-            enderecos: [],
+            endereco: {
+                cep:"",
+                logradouro:"",
+                bairro:"",
+                localidade:"",
+                uf:"",
+                complemento:""
+            },
             emails: [],
             telefones: []
         }
@@ -34,60 +40,54 @@ export default class Detalhar extends Component {
             console.log(response.data);
             console.log(this.state.cliente);
         }).catch(error =>{
-            this.error.tokenExpirou=true;
+            alert("Erro");
+            document.getElementById('divCentral').style.display="none";
         })
         
-    }
-
-    deleteCliente = () =>{
-        const {id} = this.state.cliente;
-
-        api.delete(`/cliente?id=${id}`).then(response =>{
-            if(response.ok)
-            this.props.history.push("/lista");
-        }).catch(error =>{
-            alert("Erro ao deletar");
-        })
     }
 
     render() {
         const {cliente} = this.state;
 
-        if(!this.error.tokenExpirou){
         return (
-            <div className="cliente-info">
+             <div id="divCentral" className="cliente-info" >
+                <label>Nome:</label>
                 <h1>{cliente.nome}</h1>
+                <label>CPF:</label>
                 <h1>{cliente.cpf}</h1>
                 <div>
-                {cliente.enderecos.map((end,index) =>(
-                    <div key={index}>
-                    <h1>{end.cep}</h1>
-                    <h1>{end.logradouro}</h1>
-                    <h1>{end.bairro}</h1>
-                    <h1>{end.cidade}</h1>
-                    <h1>{end.uf}</h1>
-                    <h1>{end.complemento}</h1>
-                    </div>
-                ))}
+                    <label>CEP: </label> <br />
+                    <Input value={cliente.endereco.cep}></Input> <br />
+                    <label>Logradouro:</label>
+                    <h1>{cliente.endereco.logradouro}</h1>
+                    <label>Bairro:</label>
+                    <h1>{cliente.endereco.bairro}</h1>
+                    <label>Cidade:</label>
+                    <h1>{cliente.endereco.cidade}</h1>
+                    <label>Endereco:</label>
+                    <h1>{cliente.endereco.uf}</h1>
+                    <label>Complemento:</label>
+                    <h1>{cliente.endereco.complemento}</h1>
                 </div>
-                {cliente.emails.map(email =>(
+                {cliente.emails.map((email,index) =>(
                     <div>
-                        <h1>Email : {email}</h1>
+                        <label>Email {index+1}:</label>
+                        <h1>{email}</h1>
                     </div>
                 ))}
-                {cliente.telefones.map(tel =>(
+                {cliente.telefones.map((tel,index) =>(
                     <div>
-                        <h1>Tipo Telefone : {tel.tipoTelefone}</h1>
-                        <h1>Numero Telefone : {tel.numeroTelefone}</h1>
-                        <h1>DDD : {tel.ddd}</h1>
+                        <label>Telefone {index+1}</label> <br />
+                        <hr />
+                        <label>Tipo de Telefone:</label>
+                        <h1>{tel.tipoTelefone}</h1>
+                        <label>Numero de Telefone:</label>
+                        <h1>{tel.numeroTelefone}</h1>
+                        <label>DDD:</label>
+                        <h1>{tel.ddd}</h1>
                     </div>
                 ))}
-
-                <button onClick={this.deleteCliente()}> Deletar Cliente </button>
             </div>
-        )}
-        else{
-            return <Login error={this.error.tokenExpirou}/>
-        }
+        )
     }
 }

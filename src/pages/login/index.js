@@ -44,20 +44,21 @@ class Login extends Component {
         {error && <p>Sua sessão expirou</p>}
         <Form onSubmit={this.handleSignIn}>
           <img src={Logo} alt="Airbnb logo" />
+          <div>
           {this.state.error && <p>{this.state.error}</p>}
+          </div>
           <input
-            type="usuario"
+            type="text"
             placeholder="Usuário"
             onChange={e => this.setState({ usuario: e.target.value })}
           />
           <input
-            type="senha"
+            type="password"
             placeholder="Senha"
             onChange={e => this.setState({ senha: e.target.value })}
           />
           <button type="submit">Entrar</button>
           <hr />
-          <Link to="/signup">Criar conta grátis</Link>
         </Form>
       </Container>
     );

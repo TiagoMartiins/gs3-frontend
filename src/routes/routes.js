@@ -5,8 +5,10 @@ import { isAuthenticated } from "../services/auth";
 
 import Login from "../pages/login";
 import SignUp from "../pages/cadastroCliente";
-import ListaCliente from "../pages/listaCliente"
-import Detalhar from "../pages/detalharCliente"
+import ListaCliente from "../pages/listaCliente";
+import Detalhar from "../pages/detalharCliente";
+import Logout from "../pages/logout";
+import Alterar from "../pages/alterarCliente";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -27,6 +29,8 @@ const Routes = () => (
       <Route exact path="/" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route path="/lista" component={ListaCliente} />
+      <Route path="/logout" component={Logout}/>
+      <Route path="/alterar/:id" component={Alterar}/>
       <Route path="/detalhar/:id" component={Detalhar} />
       <PrivateRoute path="/app" component={() => <h1>App</h1>} />
       <Route path="*" component={() => <h1>Page not found</h1>} />

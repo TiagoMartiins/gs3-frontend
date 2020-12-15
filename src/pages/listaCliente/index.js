@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import {getToken} from '../../services/auth';
-
 import {Link} from 'react-router-dom';
 
 import api from '../../services/api'
@@ -18,8 +16,18 @@ function ListaCliente() {
     }).catch(error =>{
         alert("Usuario não autenticado");
     })
-
-  } 
+  }
+  
+  function deleteCliente (id) {
+    console.log(id);
+    api.delete(`/cliente?id=${id}`).then(response =>{
+        if(response.ok)
+        alert("Cliente deletado com sucesso");
+        window.location.href="/lista";
+    }).catch(error =>{
+        alert("Você não tem permissão para deletar um cliente");
+    })
+  }
 
   useEffect(() => {
     handleListaCliente()
@@ -30,8 +38,7 @@ function ListaCliente() {
           {list.map((x,index) => (
             <div className="lista-list">
               <div key={index}>
-                  <label>Nome:<h5>{x.nome}</h5></label>
-                  
+                  <h1>Nome: <label> {x.nome} </label></h1>
                   <article>
                       <label>CPF: </label>  
                       <strong>{x.cpf}</strong>
@@ -40,6 +47,8 @@ function ListaCliente() {
                           <strong>{email}</strong>
                       ))}
                       <p><Link to={`/detalhar/${x.idCliente}`}>Detalhar</Link></p>
+                      <p><Link to={`/alterar/${x.idCliente}`}>Alterar</Link></p>
+                      <button onClick={() => deleteCliente(x.idCliente)}>Deletar Cliente</button>
                       <br />
                   </article>
               </div>

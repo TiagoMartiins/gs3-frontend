@@ -3,14 +3,31 @@
     margin: 20px auto 0;
     padding: 0 20px;
     border: 1px solid #dddddd;
-    border-radius: 5px;
-
+    border-radius: 10px;
+    background-color: aliceblue;
+    width: 35vw;
+    justify-content: center;
+    align-items: center;
 }
 
 .cliente-info h1 {
-    font-size: 25px;
+    font-size: 15px;
     font-weight: bold;
-    margin-top: 20px;
-    line-height: 20px;
-    color: white;
+    margin-top: 5px;
+    line-height: 2px;
+    font-family: monospace;
+    color: gray;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-bottom: 1px solid #cdcdcd;
+    width: 100%;
+  }
+
+.cliente-info label {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
 }

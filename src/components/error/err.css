@@ -1,0 +1,62 @@
+/* .label-erro-api{
+    width: 100vh;
+    margin-top: 20px;
+    border-radius: 4px;
+    border-style: double;
+    color: red;
+    margin-left: auto;
+    margin-right: auto;
+    text-align-last: center;
+  } */
+
+  .quadrado{
+    width: 100vh;
+    background-color: #1b3457;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 9px;
+    border-color: blanchedalmond;
+    flex: auto;
+    padding-bottom: 15px;
+  }
+
+  .ops{
+    font-size: 100px;
+    color: white;
+    text-align: center;
+    margin-left: 160px;
+    margin-top: 90px;
+  }
+  .erro{
+    width: 10%;
+    margin-left: 15%;
+   
+  }
+  .robo{
+    width: 30vh;
+    margin-top: 20px;
+  }
+  .mensagem-erro{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin-left: 170px;
+  }
+  .http{
+    color: #1b3457;
+    font-weight: bolder;
+    font-size: 60px;
+  }
+  .balao{
+    font-family: 'open sans';
+    font-size: .85em;
+    margin: 0 auto; 
+    background: #000;
+    border-radius: 0 30px 30px 0;
+    width: 300px;
+    height: 100px;
+    color: #fff;
+    text-align: center;
+    background-color: rgb(231, 231, 10);
+  }
