@@ -89,7 +89,7 @@ class SignUp extends Component {
     try{
       const response = await api.post("/cliente",JSON.stringify(this.state),{headers: {'Content-Type': 'application/json;charset=utf-8'}});
       if(response.data)
-        this.props.history.push("/listaCliente");
+        this.props.history.push("/lista");
     }catch(error){
       alert("Erro");
     }   
